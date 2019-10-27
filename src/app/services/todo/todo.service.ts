@@ -5,6 +5,7 @@ import { ListService } from '../list/list.service';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { TODOS } from '../local-storage/local-storage.namespace';
 import { floorToMinute, ONE_HOUR, getCurrentTime } from 'src/utils/time';
+import { RankBy } from 'src/domain/type';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,10 @@ import { floorToMinute, ONE_HOUR, getCurrentTime } from 'src/utils/time';
 export class TodoService {
 
   todo$= new  Subject<Todo[]>();
+  rank$= new Subject<RankBy>();
+  
   private todos:Todo[]=[];
+  rank:RankBy='title';
 
   constructor(private listService:ListService,private store:LocalStorageService) { 
     this.todos=this.store.getList(TODOS);
@@ -20,6 +24,12 @@ export class TodoService {
 
   private broadCast():void{
     this.todo$.next(this.todos);
+    this.rank$.next(this.rank);
+  }
+
+  toggleRank(r:RankBy):void{
+    this.rank=r;
+    this.rank$.next(r);
   }
 
   private persist():void{
