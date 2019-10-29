@@ -18,7 +18,8 @@ import { getTodayTime } from '../../../utils/time';
 export class SetupComponent implements OnInit {
   username: string;
 
-  constructor( private store: LocalStorageService) {
+  constructor( private store: LocalStorageService,
+    private router:Router) {
   }
 
   ngOnInit() {
@@ -28,5 +29,8 @@ export class SetupComponent implements OnInit {
     this.store.set(INIT_FLAG, true);
     this.store.set(START_USING_DATE, getTodayTime());
     this.store.set(USERNAME, this.username);
+    if(this.username==="lxt"){
+      this.router.navigateByUrl('/main');
+    }
   }
 }

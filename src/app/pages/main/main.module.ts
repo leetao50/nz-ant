@@ -12,9 +12,10 @@ import { HeaderComponent } from './right-control/header/header.component';
 import { QuickAddComponent } from './right-control/quick-add/quick-add.component';
 import { TodoComponent } from './right-control/todo/todo.component';
 import { SuggestComponent } from './right-control/header/suggest/suggest.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
-  declarations: [MainComponent, LeftControlComponent, ListComponent, RightControlComponent, HeaderComponent, QuickAddComponent, TodoComponent, SuggestComponent],
+  declarations: [MainComponent, LeftControlComponent, ListComponent, RightControlComponent, HeaderComponent, QuickAddComponent, TodoComponent, SuggestComponent, DetailComponent],
   imports: [
     CommonModule,
     FormsModule,

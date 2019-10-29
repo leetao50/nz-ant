@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { floorToDate, getTodayTime } from 'src/utils/time';
 import { NzDropdownContextComponent, NzDropdownService } from 'ng-zorro-antd';
 import { RankBy } from 'src/domain/type';
+import { Router } from '@angular/router';
 
 const rankerGenerator = (type:RankBy = 'title'):any =>{
   if(type==='completeFlag'){
@@ -34,7 +35,8 @@ export class TodoComponent implements OnInit {
   constructor(
     private listService:ListService,
     private todoService:TodoService,
-    private dropdownService: NzDropdownService
+    private dropdownService: NzDropdownService,    
+    private router: Router
   ) { }
   ngOnInit() {
     this.listService.lists$
@@ -72,6 +74,9 @@ export class TodoComponent implements OnInit {
     this.destory$.next();
   }
 
+  click(uuid: string): void {
+    this.router.navigateByUrl(`/main/${uuid}`);
+  }
 
 
   add(title:string):void{
