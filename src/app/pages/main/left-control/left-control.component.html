@@ -6,6 +6,12 @@
     <div class="floating-btn header-btn" *ngIf="!isCollapsed" >
        <i nz-icon [nzType]='setting' [nzTheme]='outline'></i>
     </div>
+    <div (click)="goSetting()" class="floating-btn header-btn" *ngIf="!isCollapsed">
+            <i class="anticon anticon-setting"></i>
+          </div>
+          <div (click)="goSummary()" class="floating-btn header-btn" *ngIf="!isCollapsed">
+            <i class="anticon anticon-calendar"></i>
+          </div>
 </div>
 <div class="list-wrapper">
     <app-list [isCollapsed]="isCollapsed"></app-list>
